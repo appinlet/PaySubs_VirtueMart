@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!--
+/*
+ * Copyright (c) 2019 PayGate (Pty) Ltd
+ *
+ * Author: App Inlet (Pty) Ltd
+ * 
+ * Released under the GNU General Public License
+ */
+-->
+<extension version="1.0" type="plugin" group="vmpayment" method="Upgrade" >
+  <name>VM Payment - PayGate PaySubs</name>
+  <creationDate>January 2019</creationDate>
+  <author>App Inlet (Pty) Ltd</author>
+  <authorUrl>https://www.paygate.co.za</authorUrl>
+  <copyright>Copyright (C) 2019 PayGate (Pty) Ltd. All rights reserved.</copyright>
+  <license>http://www.gnu.org/licenses/gpl-3.0.html GNU/GPL</license>
+  <version>1.0</version>
+  <description>
+      <![CDATA[<a href="http://www.paygate.co.za" target="_blank">PayGate</a> is a popular payment provider available in South Africa. ]]>
+  </description>
+  <files>
+		<filename plugin="paysubs">paysubs.php</filename>
+		<folder>language</folder>
+  </files>
+  <vmconfig>
+		<fields name="params">
+			<fieldset name="basic" addfieldpath="/administrator/components/com_virtuemart/fields">
+				<field type="spacer" default="PayGate PaySubs"/>
+				<field type="spacer" default=""/>	
+				<field  type="vmtitle" default="BASIC PARAMETERS"
+                       description=""/>
+				<field type="text" name="paysubs_terminal_id" size="10"
+					label="VMPAYMENT_PAYSUBS_MERCHANT_LABEL" 
+					default="1234" 
+					description="VMPAYMENT_PAYSUBS_MERCHANT_DESC" />
+				<field type="text" name="paysubs_description_of_goods" size="50" 
+					label="VMPAYMENT_PAYSUBS_GOODS_LABEL" 
+					default="Online Purchase" 
+					description="VMPAYMENT_PAYSUBS_GOODS_DESC" 
+					/>
+				<field type="text" name="paysubs_currency" size="3" 
+					label="VMPAYMENT_PAYSUBS_CURRENCY_LABEL" 
+					default="ZAR" 
+					description="VMPAYMENT_PAYSUBS_CURRENCY_DESC" 
+					readonly="true"/>
+				<field type="radio" name="paysubs_populate_payer_email" size="1" 
+					label="VMPAYMENT_PAYSUBS_POPULATE_PAYER_EMAIL_LABEL" 
+					default="Y" 
+					description="VMPAYMENT_paysubs_POPULATE_PAYER_EMAIL_DESC">
+					<option value="N">NO</option>
+					<option value="Y">YES</option>
+				</field>
+				<field type="radio" name="paysubs_occur_create" size="1"
+					label="VMPAYMENT_PAYSUBS_ENABLE_RECURRING_PAYMENTS_LABEL"
+					default="N"
+					description="VMPAYMENT_PAYSUBS_ENABLE_RECURRING_PAYMENTS_DESC">
+					<option value="N">NO</option>
+					<option value="Y">YES</option>
+				</field>
+				<field type="list" name="paysubs_occur_frequency" size="1"
+					label="VMPAYMENT_PAYSUBS_OCCUR_FREQUENCY_LABEL"
+					default="M"
+					description="VMPAYMENT_PAYSUBS_OCCUR_FREQUENCY_DESC">
+					<option value="D">Daily</option>
+					<option value="W">Weekly</option>
+					<option value="M">Monthly</option>
+					<option value="Q">Quarterly</option>
+					<option value="6">Bi-annually</option>
+					<option value="A">Annually</option>
+				</field>
+				<field type="radio" name="paysubs_occur_create" size="1"
+					label="VMPAYMENT_PAYSUBS_ENABLE_RECURRING_PAYMENTS_LABEL"
+					default="N"
+					description="VMPAYMENT_PAYSUBS_ENABLE_RECURRING_PAYMENTS_DESC">
+					<option value="N">NO</option>
+					<option value="Y">YES</option>
+				</field>
+				<field  type="vmtitle" default="SMS"
+                       description=""/>
+				<field type="radio" name="paysubs_sms_send" label="VMPAYMENT_PAYSUBS_SMS_SEND_LABEL" default="N" description="VMPAYMENT_PAYSUBS_SMS_SEND_DESC">
+					<option value="N">NO</option>
+					<option value="Y">YES</option>
+				</field>
+				<field type="text" name="paysubs_mobile_number" size="20" 
+					label="VMPAYMENT_PAYSUBS_MOBILE_NUMBER_LABEL" 
+					default="" 
+					description="VMPAYMENT_PAYSUBS_MOBILE_NUMBER_DESC" />
+				<field type="text" name="paysubs_sms_message" size="100"
+					label="VMPAYMENT_PAYSUBS_SMS_MESSAGE_LABEL" 
+					default="" 
+					description="VMPAYMENT_PAYSUBS_SMS_MESSAGE_DESC" />
+				<field type="spacer" default="" level="level1" />
+				<field  type="vmtitle" default="Security"
+                       description=""/>				
+				<field type="text" name="paysubs_md5_salt" size="50" 
+					label="VMPAYMENT_PAYSUBS_MD5_SALT_LABEL" 
+					default="" 
+					description="VMPAYMENT_PAYSUBS_MD5_SALT_DESC" />
+					
+				<field  type="vmtitle" default="VMPAYMENT_PAYSUBS_DISCOUNT_FEE_SECTION"
+                       description=""/>
+                    <field name="cost_per_transaction" type="text" label="VMPAYMENT_PAYSUBS_COST_PER_TRANSACTION"
+                           description="VMPAYMENT_PAYSUBS_COST_PER_TRANSACTION_TIP"/>
+                    <field name="cost_percent_total" type="text" label="VMPAYMENT_PAYSUBS_COST_PERCENT_TOTAL"
+                           description="VMPAYMENT_PAYSUBS_COST_PERCENT_TOTAL_TIP"/>
+                    <field name="tax_id" type="vmtaxes" scope="com_virtuemart" label="VMPAYMENT_PAYSUBS_TAX"
+                           description="VMPAYMENT_PAYSUBS_TAX_TIP"/>
+				<field type="spacer" default="Debugging" level="level1" />
+				
+				<field  type="vmtitle" default="Debug"
+                       description=""/>
+				<field type="radio" name="paysubs_debug" 
+					label="VMPAYMENT_PAYSUBS_DEBUG_MODE_LABEL" 
+					default="N" 
+					description="VMPAYMENT_PAYSUBS_DEBUG_MODE_DESC">
+					<option value="N">NO</option>
+					<option value="Y">YES</option>
+				</field>
+			</fieldset>
+       </fields>
+    </vmconfig>
+</extension>
